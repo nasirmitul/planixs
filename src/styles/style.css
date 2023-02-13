@@ -1,0 +1,543 @@
+/* =========================== Basic Setup =========================== */
+:root {
+    --primary: #125AFF;
+    --primary-100: rgba(20, 91, 255, 0.1);
+    --primary-50: #F2F6FF;
+    --background: #F3F4F8;
+    --sideWidth: 100px;
+    --white: #FFFFFF;
+    --white-5: #FBFAFF;
+    --white-50: #D4DBE2;
+    --white-100: #F2F6FF;
+    --icons-gap: 25px;
+    --dark-800: #2b2b2b;
+    --dark: #454545;
+    --error: #d44434;
+    --mute: #ABB2B9;
+    --shadow-primary: 0px 6px 12px -1px rgba(18, 89, 255, 0.35);
+    --shadow-primary-100: 0px 6px 12px -3px rgba(18, 89, 255, 0.20);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    width: min(1320px, 90%);
+    margin: auto;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--background);
+}
+
+a {
+    text-decoration: none;
+}
+
+.custom-button {
+    padding: 8px 20px;
+    background: var(--primary);
+    outline: none;
+    border-radius: 5px;
+    color: var(--text-light);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 2px solid var(--primary);
+    transition: .5s;
+}
+
+.custom-button:hover {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.custom-button-outline {
+    padding: 8px 20px;
+    background: transparent;
+    outline: none;
+    border-radius: 5px;
+    color: var(--primary);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 2px solid var(--primary);
+    transition: .5s;
+}
+
+.custom-button-outline:hover {
+    background: var(--primary);
+    color: var(--text-light);
+    border: 2px solid var(--background-500);
+}
+
+.section-title p {
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+button:disabled,
+button[disabled] {
+    background: var(--gray);
+    color: var(--text-light);
+}
+
+button:disabled:hover,
+button[disabled]:hover {
+    background: var(--gray);
+    color: var(--text-light);
+}
+
+
+/* ============== Scrollbar Design ================ */
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 3px rgb(231, 231, 231);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(197, 197, 197, 0.8);
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(197, 197, 197, 1);
+}
+
+
+
+/* ======================================= Layout Design ======================================== */
+.main-layout {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+}
+
+.main-layout .side-navigation {
+    width: var(--sideWidth);
+    background: var(--primary-50);
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+
+/* Side navigation of main layout */
+.main-layout .side-navigation .side-navigation-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.main-layout .side-navigation .side-navigation-content .logo-bg {
+    height: 65px;
+    width: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    background: var(--white-5);
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.main-layout .side-navigation .side-navigation-content .logo {
+    width: 36px;
+    height: 36px;
+}
+
+.main-layout .side-navigation .side-navigation-content .bottom-content {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    gap: var(--icons-gap);
+    justify-content: center;
+    align-items: center;
+}
+
+/* middle section top navigation of main layout */
+.main-layout .middle-section {
+    width: calc(70% - var(--sideWidth));
+    margin-left: var(--sideWidth);
+    padding: 0 40px;
+    position: fixed;
+    height: 200vh;
+}
+
+.main-layout .middle-section:hover {
+    position: absolute;
+}
+
+.main-layout .middle-section .top-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 40px;
+    position: fixed;
+    background: var(--white-5);
+    /* width: calc(100% + 80px); */
+    width: calc(70% - var(--sideWidth));
+    /* left: -40px; */
+    z-index: 9;
+    left: var(--sideWidth);
+}
+
+.main-layout .middle-section .top-navigation::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    /* width: calc(100% + 80px); */
+    background: var(--white-50);
+    width: 100%;
+    bottom: 0;
+    left: 0px;
+}
+
+.main-layout .middle-section .top-navigation .links {
+    display: flex;
+    align-items: center;
+    gap: var(--icons-gap);
+}
+
+.main-layout .middle-section .top-navigation .links a {
+    font-size: 1.1rem;
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.main-layout .middle-section .top-navigation .links a.active {
+    color: var(--primary);
+}
+
+.main-layout .middle-section .top-navigation .search-bar {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.main-layout .middle-section .top-navigation .search-bar input {
+    width: 500px;
+    padding: 10px 20px;
+    background: var(--white-100);
+    border: 1px solid var(--white);
+    outline: none;
+    color: var(--dark);
+    font-size: 1.1rem;
+    border-radius: 10px;
+}
+
+.main-layout .middle-section .top-navigation .search-bar input::placeholder {
+    color: var(--mute);
+    font-weight: 300;
+}
+
+.main-layout .middle-section .top-navigation .search-bar svg {
+    position: absolute;
+    right: 15px;
+    fill: var(--primary);
+    cursor: pointer;
+}
+
+
+/* Right section of main layout */
+.main-layout .right-section {
+    width: 30%;
+    background: var(--white-5);
+    position: fixed;
+    padding: 23px 40px;
+    right: 0;
+    height: 200vh;
+}
+
+.main-layout .right-section:hover {
+    position: absolute;
+}
+
+.main-layout .right-section::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 1px;
+    background: var(--white-50);
+    top: 0;
+    left: 0;
+}
+
+
+/* ===================================== Left side all Navigation =========================================*/
+
+/* Home Navigation */
+.left-side-navigation {
+    position: fixed;
+    left: 0;
+    width: var(--sideWidth);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 125px;
+}
+
+.left-side-navigation .links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--icons-gap);
+}
+
+.main-layout .side-navigation .side-navigation-content .bottom-content a.active,
+.left-side-navigation .links a.active {
+    height: 50px;
+    width: 50px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--primary);
+    transition: .5s all;
+    box-shadow: var(--shadow-primary);
+}
+
+.main-layout .side-navigation .side-navigation-content .bottom-content a svg,
+.left-side-navigation .links a svg {
+    fill: var(--dark);
+}
+
+.main-layout .side-navigation .side-navigation-content .bottom-content a.active svg,
+.left-side-navigation .links a.active svg {
+    fill: var(--white);
+}
+
+
+
+/* ================================================= Home Contents ================================================= */
+.home-contents {
+    padding-top: 120px;
+}
+
+
+/* ================================================= Right Side Layout ================================================ */
+.right-side-layout {
+    position: relative;
+}
+
+.right-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.right-heading .profile a,
+.right-heading .notification {
+    height: 50px;
+    width: 50px;
+    background: var(--white-5);
+    box-shadow: var(--shadow-primary-100);
+    border-radius: 15px;
+    border: 2px solid var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.right-heading .profile a {
+    position: relative;
+    top: 3px;
+}
+
+.progress-bar {
+    position: relative;
+    padding: 40px 0;
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    background: var(--mute);
+    bottom: 0;
+}
+
+.progress-outside {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 230px;
+    width: 230px;
+    background: transparent;
+    border: 10px solid var(--white-100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.progress-circle {
+    height: 190px;
+    width: 190px;
+    background: var(--white-100);
+    border: 4px solid var(--white-5);
+    box-shadow: 0 8px 10px -5px rgb(18, 90, 255, .1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.progress-circle .progress-data {
+    text-align: center;
+}
+
+.progress-circle .progress-data .daily-plan {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--mute);
+}
+
+.progress-circle .progress-data .percentage {
+    font-size: 60px;
+    font-weight: 800;
+    line-height: 70px;
+    color: var(--primary);
+
+}
+
+.progress-circle .progress-data .completed {
+    font-size: .9rem;
+    font-weight: 300;
+    color: var(--mute);
+}
+
+
+
+/* ================================================= Notification style ================================================ */
+.notification-background {
+    position: relative;
+    top: 20px;
+}
+
+
+.notification-main-body {
+    position: absolute;
+    height: fit-content;
+    max-height: 600px;
+    width: 100%;
+    left: 0;
+    /* top: 65px; */
+    background: var(--white-5);
+    z-index: 2;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-primary-100);
+    overflow-y: scroll;
+    border: 3px solid var(--white);
+}
+
+.arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid var(--primary);
+    position: absolute;
+    right: 15px;
+    top: -10px;
+    z-index: 4;
+}
+
+.notification-background .notification-contents .notification-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.notification-background .notification-contents .notification-heading::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    background: var(--mute);
+    bottom: -10px;
+}
+
+.notification-background .notification-contents .notification-heading .title {
+    color: var(--dark);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.notification-background .notification-contents .notification-heading .mark {
+    color: var(--primary);
+    font-size: .9rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.notification-background .notification-contents .single-notification {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    /* margin-bottom: 25px; */
+    margin-top: 25px;
+}
+
+.notification-background .notification-contents .single-notification .icon-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.notification-background .notification-contents .single-notification .icon-message .icon {
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--primary-100);
+    position: relative;
+    top: 2px;
+}
+
+.notification-background .notification-contents .single-notification .icon-message .message .message-title {
+    color: var(--dark-800);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 5px !important;
+    line-height: 20px;
+}
+
+.notification-background .notification-contents .single-notification .icon-message .message .message-body {
+    color: var(--dark);
+    font-size: .9rem;
+    /* font-weight: 400; */
+    line-height: 20px;
+}
+
+.notification-background .notification-contents .single-notification .times-ago .time {
+    font-size: .9rem;
+    color: var(--dark);
+    font-weight: 600;
+}
