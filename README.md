@@ -1,6 +1,6 @@
 ## Project Name: Planixs - A Task management application
 
-[Project Live Link - web](https://planixs.web.app/)
+[Project Live Link - web](https://planixs.web.app/) </br>
 [Mobile Application - Coming Soon]()
 
 ### Project Idea:
